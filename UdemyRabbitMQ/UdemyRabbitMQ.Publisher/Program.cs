@@ -19,20 +19,38 @@ namespace UdemyRabbitMQ.Publisher
             //kanal üzerinden kuyruk oluşacak, şuan P mesajı direk queue'ya atıyor ama exchange'de böyle olmayacak buna gerek kalmayacak
             //channel.QueueDeclare("hello-queue", true, false, false);//true:ram değil fiziksel tut restart olsa bile kalsın. false:bu kuyruğa başka kanallardanda ulaşılabilsin.
 
-            #region Fanout Exchange
-            channel.ExchangeDeclare("logs-fanout", durable: true, type: ExchangeType.Fanout);
+            //#region Fanout Exchange
+            //channel.ExchangeDeclare("logs-fanout", durable: true, type: ExchangeType.Fanout);
+            //#endregion
 
+            #region Direct Exchange
+            channel.ExchangeDeclare("logs-direct", durable: true, type: ExchangeType.Direct); //exchange oluştu
+
+            Enum.GetNames(typeof(LogNames)).ToList().ForEach(x =>
+            {
+                //mesajlar route'lanacak directive exchange için
+                var routeKey = $"route-{x}"; //4 farklı route oluştu
+                var queueName = $"direct-queue-{x}"; //kuyruk ismi
+                channel.QueueDeclare(queueName, true, false, false);//queue oluştu
+                channel.QueueBind(queueName, "logs-direct", routeKey, null); //queue'yu exchange'e route ile birlikte bind ettik
+            });
             #endregion
 
             #region WORK QUEUE
             Enumerable.Range(1, 50).ToList().ForEach(x =>
             {
+                LogNames log = (LogNames)new Random().Next(1, 5);
                 string message = $"Message {x}";
                 var messageBody = Encoding.UTF8.GetBytes(message);
                 //exchange olmadığı zaman string.Empty
                 //channel.BasicPublish(string.Empty, "hello-queue", null, messageBody);
+
+                //mesajlar route'lanacak directive exchange için
+                var routeKey = $"route-{log}";
+
                 //exchange olursa
-                channel.BasicPublish("logs-fanout", "", null, messageBody);
+                //channel.BasicPublish("logs-fanout", "", null, messageBody);
+                channel.BasicPublish("logs-direct", routeKey, null, messageBody);
                 Console.WriteLine($"Message Gönderildi: {message}");
             });
             #endregion
@@ -46,5 +64,14 @@ namespace UdemyRabbitMQ.Publisher
             //Console.WriteLine("Message Gönderildi");
             //Console.ReadLine();
         }
+    }
+
+    //direct exchange
+    public enum LogNames
+    {
+        Critical = 1,
+        Error = 2,
+        Warning = 3,
+        Info = 4
     }
 }
