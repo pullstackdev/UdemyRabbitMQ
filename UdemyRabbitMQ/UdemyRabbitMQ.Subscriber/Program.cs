@@ -25,7 +25,7 @@ namespace UdemyRabbitMQ.Subscriber
 
             //okuma yapılacak
             var consumer = new EventingBasicConsumer(channel); //kanalı dinle
-            //bu kanal üzerinden hangi kuyruğu dinleyecek, şuan P mesajı direk queue'ya atıyor ama exchange'de böyle olmayacak buna gerek kalmayacak
+            //bu kanal üzerinden hangi kuyruğu dinleyecek
             channel.BasicConsume("hello-queue", false, consumer); //true:mesaj geldiğinden doğruda yanlışta işlense kuyruktan sil durumu. false olursa silme ben işlenince haber veririm
 
             consumer.Received += (object sender, BasicDeliverEventArgs e) =>

@@ -16,7 +16,7 @@ namespace UdemyRabbitMQ.Publisher
             using var connection = factory.CreateConnection();
             //rabbitmq'ya kanal üzerinden bağlanılır, kanal oluştur
             var channel = connection.CreateModel();
-            //kanal üzerinden kuyruk oluşacak
+            //kanal üzerinden kuyruk oluşacak, şuan P mesajı direk queue'ya atıyor ama exchange'de böyle olmayacak buna gerek kalmayacak
             channel.QueueDeclare("hello-queue", true, false, false);//true:ram değil fiziksel tut restart olsa bile kalsın. false:bu kuyruğa başka kanallardanda ulaşılabilsin.
 
             #region WORK QUEUE
