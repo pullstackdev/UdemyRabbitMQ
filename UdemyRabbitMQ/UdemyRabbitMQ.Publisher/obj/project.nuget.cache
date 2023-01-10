@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "B2QEcXMhbRs9oOY9zMhAhpsvWCHKgXNQU3Hijd+O9/qCBQDWRCU3oQAvmi44xrFRz0JTBanio+/opDE5K8PEDA==",
+  "dgSpecHash": "iQvfTHFHlIByhAE8ERy+zy08lAc860Cx9Bvcb313x4SEyNfWcFIybQQx0r3jR+UqFBESyIl6+P2L6ArzzzBZNQ==",
   "success": true,
-  "projectFilePath": "D:\\workshop\\my\\Udemy\\F.C-Core-RabbitMQ\\UdemyRabbitMQ\\UdemyRabbitMQ.Publisher\\UdemyRabbitMQ.Publisher.csproj",
+  "projectFilePath": "D:\\workshop\\my\\Udemy\\F.C-Core-RabbitMQ\\UdemyRabbitMQ\\UdemyRabbitMQ\\UdemyRabbitMQ.Publisher\\UdemyRabbitMQ.Publisher.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\asus-f\\.nuget\\packages\\rabbitmq.client\\6.4.0\\rabbitmq.client.6.4.0.nupkg.sha512",
     "C:\\Users\\asus-f\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",

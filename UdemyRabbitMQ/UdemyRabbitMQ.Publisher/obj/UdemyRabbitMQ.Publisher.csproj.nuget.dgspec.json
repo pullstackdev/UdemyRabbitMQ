@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\workshop\\my\\Udemy\\F.C-Core-RabbitMQ\\UdemyRabbitMQ\\UdemyRabbitMQ.Publisher\\UdemyRabbitMQ.Publisher.csproj": {}
+    "D:\\workshop\\my\\Udemy\\F.C-Core-RabbitMQ\\UdemyRabbitMQ\\UdemyRabbitMQ\\UdemyRabbitMQ.Publisher\\UdemyRabbitMQ.Publisher.csproj": {}
   },
   "projects": {
-    "D:\\workshop\\my\\Udemy\\F.C-Core-RabbitMQ\\UdemyRabbitMQ\\UdemyRabbitMQ.Publisher\\UdemyRabbitMQ.Publisher.csproj": {
+    "D:\\workshop\\my\\Udemy\\F.C-Core-RabbitMQ\\UdemyRabbitMQ\\UdemyRabbitMQ\\UdemyRabbitMQ.Publisher\\UdemyRabbitMQ.Publisher.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\workshop\\my\\Udemy\\F.C-Core-RabbitMQ\\UdemyRabbitMQ\\UdemyRabbitMQ.Publisher\\UdemyRabbitMQ.Publisher.csproj",
+        "projectUniqueName": "D:\\workshop\\my\\Udemy\\F.C-Core-RabbitMQ\\UdemyRabbitMQ\\UdemyRabbitMQ\\UdemyRabbitMQ.Publisher\\UdemyRabbitMQ.Publisher.csproj",
         "projectName": "UdemyRabbitMQ.Publisher",
-        "projectPath": "D:\\workshop\\my\\Udemy\\F.C-Core-RabbitMQ\\UdemyRabbitMQ\\UdemyRabbitMQ.Publisher\\UdemyRabbitMQ.Publisher.csproj",
+        "projectPath": "D:\\workshop\\my\\Udemy\\F.C-Core-RabbitMQ\\UdemyRabbitMQ\\UdemyRabbitMQ\\UdemyRabbitMQ.Publisher\\UdemyRabbitMQ.Publisher.csproj",
         "packagesPath": "C:\\Users\\asus-f\\.nuget\\packages\\",
-        "outputPath": "D:\\workshop\\my\\Udemy\\F.C-Core-RabbitMQ\\UdemyRabbitMQ\\UdemyRabbitMQ.Publisher\\obj\\",
+        "outputPath": "D:\\workshop\\my\\Udemy\\F.C-Core-RabbitMQ\\UdemyRabbitMQ\\UdemyRabbitMQ\\UdemyRabbitMQ.Publisher\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
