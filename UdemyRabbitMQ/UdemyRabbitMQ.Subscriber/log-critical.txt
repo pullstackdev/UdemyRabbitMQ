@@ -14,3 +14,7 @@ Message 36
 Message 44
 Message 47
 Message 50
+Log-Type: Warning-Error-Warning
+Log-Type: Error-Error-Error
+Log-Type: Error-Error-Warning
+Log-Type: Error-Error-Critical

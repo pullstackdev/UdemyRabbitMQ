@@ -28,16 +28,24 @@ namespace UdemyRabbitMQ.Subscriber
             ////channel.QueueDeclare("log-database-save-queue", true, false, false); //bunu eklersek buraya artık kuyruk kalıcı olur Consumer down olsa bile
             //channel.QueueBind(randomQueueName, "logs-fanout", "", null); //C giderse queue da gider, ama declare etseydik silinmezdi
             //#endregion
-            #region Direct Exchange
-            var queueName = "direct-queue-Critical";
-            #endregion
+            //#region Direct Exchange
+            //var queueName = "direct-queue-Critical";
+            //#endregion
 
             channel.BasicQos(0, 5, false); //tek seferde 1 subs'a 5 mesaj iletir, true olursa tüm subs'lara totalde 5 gönderir tek seferde, bölüştürür
 
             //okuma yapılacak
             var consumer = new EventingBasicConsumer(channel); //kanalı dinle
-                                                               //bu kanal üzerinden hangi kuyruğu dinleyecek
-                                                               //channel.BasicConsume("hello-queue", false, consumer); //true:mesaj geldiğinden doğruda yanlışta işlense kuyruktan sil durumu. false olursa silme ben işlenince haber veririm
+            ////bu kanal üzerinden hangi kuyruğu dinleyecek
+            //channel.BasicConsume("hello-queue", false, consumer); //true:mesaj geldiğinden doğruda yanlışta işlense kuyruktan sil durumu. false olursa silme ben işlenince haber veririm
+
+            #region Topic Exchange
+            var queueName = channel.QueueDeclare().QueueName;
+            var routeKey = "*.Error.*"; //routeKey'i ortasında Error olan mesajları dinle/işle sadece
+            channel.QueueBind(queueName, "logs-topic", routeKey);
+            channel.BasicConsume(queueName, false, consumer); //direct exchange
+            #endregion
+
             #region Exchange
             //channel.BasicConsume(randomQueueName, false, consumer); //fanout - artık randomqueuename'i tüketecek
             channel.BasicConsume(queueName, false, consumer); //direct exchange
