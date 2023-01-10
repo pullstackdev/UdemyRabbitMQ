@@ -1,6 +1,7 @@
 ﻿using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading;
@@ -36,13 +37,23 @@ namespace UdemyRabbitMQ.Subscriber
 
             //okuma yapılacak
             var consumer = new EventingBasicConsumer(channel); //kanalı dinle
-            ////bu kanal üzerinden hangi kuyruğu dinleyecek
-            //channel.BasicConsume("hello-queue", false, consumer); //true:mesaj geldiğinden doğruda yanlışta işlense kuyruktan sil durumu. false olursa silme ben işlenince haber veririm
+                                                               ////bu kanal üzerinden hangi kuyruğu dinleyecek
+                                                               //channel.BasicConsume("hello-queue", false, consumer); //true:mesaj geldiğinden doğruda yanlışta işlense kuyruktan sil durumu. false olursa silme ben işlenince haber veririm
 
-            #region Topic Exchange
+            //#region Topic Exchange
+            //var queueName = channel.QueueDeclare().QueueName;
+            //var routeKey = "*.Error.*"; //routeKey'i ortasında Error olan mesajları dinle/işle sadece
+            //channel.QueueBind(queueName, "logs-topic", routeKey);
+            //channel.BasicConsume(queueName, false, consumer); //direct exchange
+            //#endregion
+
+            #region Header Exchange
             var queueName = channel.QueueDeclare().QueueName;
-            var routeKey = "*.Error.*"; //routeKey'i ortasında Error olan mesajları dinle/işle sadece
-            channel.QueueBind(queueName, "logs-topic", routeKey);
+            Dictionary<string, object> headers = new Dictionary<string, object>();
+            headers.Add("format", "pdf");
+            headers.Add("shape", "a4");
+            headers.Add("x-match", "all");
+            channel.QueueBind(queueName, "logs-header", string.Empty, headers); //route yok, header var. gönderilen mesajın headerındaki değerler aynı ise dinler
             channel.BasicConsume(queueName, false, consumer); //direct exchange
             #endregion
 
@@ -60,7 +71,7 @@ namespace UdemyRabbitMQ.Subscriber
                 Console.WriteLine("Gelen Message: " + message);
 
                 //bazen logları txt'ye eklemek gerekebilir
-                File.AppendAllText("log-critical.txt", message + "\n");
+                //File.AppendAllText("log-critical.txt", message + "\n");
 
                 //mesajın işlendiğini rq'ya iletir haber verir ki gerekirse silebilsin
                 channel.BasicAck(e.DeliveryTag, false); //işlenmeyen olsaydı UI daki Unack sayısını artardı

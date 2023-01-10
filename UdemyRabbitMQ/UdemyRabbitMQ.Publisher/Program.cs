@@ -1,5 +1,6 @@
 ﻿using RabbitMQ.Client;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
@@ -36,35 +37,49 @@ namespace UdemyRabbitMQ.Publisher
             //});
             //#endregion
 
-            #region Topic Exchange
-            channel.ExchangeDeclare("logs-topic", durable: true, type: ExchangeType.Topic); //exchange oluştu
+            //#region Topic Exchange
+            //channel.ExchangeDeclare("logs-topic", durable: true, type: ExchangeType.Topic); //exchange oluştu
+            //#endregion
+
+            #region Header Exchange
+            channel.ExchangeDeclare("logs-header", durable: true, type: ExchangeType.Headers); //exchange oluştu
+
+            Dictionary<string, object> headers = new Dictionary<string, object>();
+            headers.Add("format", "pdf");
+            headers.Add("shape", "a4");
+
+            var properties = channel.CreateBasicProperties();
+            properties.Headers = headers; //header hazırlandı
+
+            channel.BasicPublish("logs-header", string.Empty, properties, Encoding.UTF8.GetBytes("header message")); //artık routeKey boş çünkü onunla değil headerle gidiyor
+            Console.WriteLine("Mesaj gönderildi");
             #endregion
 
-            #region WORK QUEUE
-            Random rnd = new Random(); //for topic exchange
-            Enumerable.Range(1, 50).ToList().ForEach(x =>
-            {
-                LogNames log = (LogNames)new Random().Next(1, 5);
-                //mesajlar route'landı, topic exchange için
+            //#region WORK QUEUE
+            //Random rnd = new Random(); //for topic exchange
+            //Enumerable.Range(1, 50).ToList().ForEach(x =>
+            //{
+            //    LogNames log = (LogNames)new Random().Next(1, 5);
+            //    //mesajlar route'landı, topic exchange için
 
-                LogNames log1 = (LogNames)rnd.Next(1, 5);
-                LogNames log2 = (LogNames)rnd.Next(1, 5);
-                LogNames log3 = (LogNames)rnd.Next(1, 5);
-                var routeKey = $"{log1}.{log2}.{log3}";
-                string message = $"Log-Type: {log1}-{log2}-{log3}";
-                var messageBody = Encoding.UTF8.GetBytes(message);
-                //exchange olmadığı zaman string.Empty
-                //channel.BasicPublish(string.Empty, "hello-queue", null, messageBody);
+            //    LogNames log1 = (LogNames)rnd.Next(1, 5);
+            //    LogNames log2 = (LogNames)rnd.Next(1, 5);
+            //    LogNames log3 = (LogNames)rnd.Next(1, 5);
+            //    var routeKey = $"{log1}.{log2}.{log3}";
+            //    string message = $"Log-Type: {log1}-{log2}-{log3}";
+            //    var messageBody = Encoding.UTF8.GetBytes(message);
+            //    //exchange olmadığı zaman string.Empty
+            //    //channel.BasicPublish(string.Empty, "hello-queue", null, messageBody);
 
-                //mesajlar route'lanacak directive exchange için
-                //var routeKey = $"route-{log}";
+            //    //mesajlar route'lanacak directive exchange için
+            //    //var routeKey = $"route-{log}";
 
-                //exchange olursa
-                //channel.BasicPublish("logs-fanout", "", null, messageBody);
-                channel.BasicPublish("logs-topic", routeKey, null, messageBody);
-                Console.WriteLine($"Message Gönderildi: {message}");
-            });
-            #endregion
+            //    //exchange olursa
+            //    //channel.BasicPublish("logs-fanout", "", null, messageBody);
+            //    channel.BasicPublish("logs-topic", routeKey, null, messageBody);
+            //    Console.WriteLine($"Message Gönderildi: {message}");
+            //});
+            //#endregion
 
             ////mesajı ayarla
             //string message = "hello world";
