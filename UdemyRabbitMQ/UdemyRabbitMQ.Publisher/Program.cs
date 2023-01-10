@@ -17,26 +17,34 @@ namespace UdemyRabbitMQ.Publisher
             //rabbitmq'ya kanal üzerinden bağlanılır, kanal oluştur
             var channel = connection.CreateModel();
             //kanal üzerinden kuyruk oluşacak, şuan P mesajı direk queue'ya atıyor ama exchange'de böyle olmayacak buna gerek kalmayacak
-            channel.QueueDeclare("hello-queue", true, false, false);//true:ram değil fiziksel tut restart olsa bile kalsın. false:bu kuyruğa başka kanallardanda ulaşılabilsin.
+            //channel.QueueDeclare("hello-queue", true, false, false);//true:ram değil fiziksel tut restart olsa bile kalsın. false:bu kuyruğa başka kanallardanda ulaşılabilsin.
+
+            #region Fanout Exchange
+            channel.ExchangeDeclare("logs-fanout", durable: true, type: ExchangeType.Fanout);
+
+            #endregion
 
             #region WORK QUEUE
             Enumerable.Range(1, 50).ToList().ForEach(x =>
             {
                 string message = $"Message {x}";
                 var messageBody = Encoding.UTF8.GetBytes(message);
-                channel.BasicPublish(string.Empty, "hello-queue", null, messageBody);
+                //exchange olmadığı zaman string.Empty
+                //channel.BasicPublish(string.Empty, "hello-queue", null, messageBody);
+                //exchange olursa
+                channel.BasicPublish("logs-fanout", "", null, messageBody);
                 Console.WriteLine($"Message Gönderildi: {message}");
             });
             #endregion
 
-            //mesajı ayarla
-            string message = "hello world";
-            //rabbitmq byte türünden herşeyi mesaj olarak alabilir, ayarlaması yapılacak
-            var messageBody = Encoding.UTF8.GetBytes(message);
-            //kanal üzerinden kuyruğa mesaj pushlanacak
-            channel.BasicPublish(string.Empty, "hello-queue", null, messageBody);
-            Console.WriteLine("Message Gönderildi");
-            Console.ReadLine();
+            ////mesajı ayarla
+            //string message = "hello world";
+            ////rabbitmq byte türünden herşeyi mesaj olarak alabilir, ayarlaması yapılacak
+            //var messageBody = Encoding.UTF8.GetBytes(message);
+            ////kanal üzerinden kuyruğa mesaj pushlanacak
+            //channel.BasicPublish(string.Empty, "hello-queue", null, messageBody);
+            //Console.WriteLine("Message Gönderildi");
+            //Console.ReadLine();
         }
     }
 }
