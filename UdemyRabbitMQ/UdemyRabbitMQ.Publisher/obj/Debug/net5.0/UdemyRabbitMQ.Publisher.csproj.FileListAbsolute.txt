@@ -34,3 +34,5 @@ D:\workshop\my\Udemy\F.C-Core-RabbitMQ\UdemyRabbitMQ\UdemyRabbitMQ\UdemyRabbitMQ
 D:\workshop\my\Udemy\F.C-Core-RabbitMQ\UdemyRabbitMQ\UdemyRabbitMQ\UdemyRabbitMQ.Publisher\obj\Debug\net5.0\UdemyRabbitMQ.Publisher.pdb
 D:\workshop\my\Udemy\F.C-Core-RabbitMQ\UdemyRabbitMQ\UdemyRabbitMQ\UdemyRabbitMQ.Publisher\obj\Debug\net5.0\UdemyRabbitMQ.Publisher.genruntimeconfig.cache
 D:\workshop\my\Udemy\F.C-Core-RabbitMQ\UdemyRabbitMQ\UdemyRabbitMQ\UdemyRabbitMQ.Publisher\obj\Debug\net5.0\ref\UdemyRabbitMQ.Publisher.dll
+D:\workshop\my\Udemy\F.C-Core-RabbitMQ\UdemyRabbitMQ\UdemyRabbitMQ\UdemyRabbitMQ.Publisher\bin\Debug\net5.0\Shared.dll
+D:\workshop\my\Udemy\F.C-Core-RabbitMQ\UdemyRabbitMQ\UdemyRabbitMQ\UdemyRabbitMQ.Publisher\bin\Debug\net5.0\Shared.pdb

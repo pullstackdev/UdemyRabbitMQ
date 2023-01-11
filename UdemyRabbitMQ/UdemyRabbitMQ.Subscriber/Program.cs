@@ -1,9 +1,11 @@
 ﻿using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
+using Shared;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Text.Json;
 using System.Threading;
 
 namespace UdemyRabbitMQ.Subscriber
@@ -66,9 +68,13 @@ namespace UdemyRabbitMQ.Subscriber
             {
                 var message = Encoding.UTF8.GetString(e.Body.ToArray());//byte olarak gelen mesajı aldı çevirdi
 
+                //product class'ı burada deserialize edilir
+                Product product = JsonSerializer.Deserialize<Product>(message);
+
                 Thread.Sleep(1500);
 
-                Console.WriteLine("Gelen Message: " + message);
+                //Console.WriteLine("Gelen Message: " + message);
+                Console.WriteLine($"Gelen Message: { product.Id}-{ product.Name}-{product.Price}-{product.Stock} ");
 
                 //bazen logları txt'ye eklemek gerekebilir
                 //File.AppendAllText("log-critical.txt", message + "\n");
