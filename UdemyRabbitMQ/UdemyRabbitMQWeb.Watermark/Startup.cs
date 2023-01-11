@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using UdemyRabbitMQWeb.Watermark.BackgroundServices;
 using UdemyRabbitMQWeb.Watermark.Models;
 using UdemyRabbitMQWeb.Watermark.Services;
 
@@ -26,7 +27,7 @@ namespace UdemyRabbitMQWeb.Watermark
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton(sp=> new ConnectionFactory() { Uri = new Uri(Configuration.GetConnectionString("RabbitMQ")) }); //RABBÝTMQ'ya baðlandý, DI ile serviste çaðýr
+            services.AddSingleton(sp=> new ConnectionFactory() { Uri = new Uri(Configuration.GetConnectionString("RabbitMQ")), DispatchConsumersAsync = true }); //RABBÝTMQ'ya baðlandý, DI ile serviste çaðýr. BsicConsumer asyncda olduðu için DispatchConsumersAsync ekledik 
             services.AddSingleton<RabbitMQClientService>(); //SERVÝS EKLENDÝ
             services.AddSingleton<RabbitMQPublisher>(); //PUBLÝSHER SERVÝS ADDED
 
@@ -34,6 +35,8 @@ namespace UdemyRabbitMQWeb.Watermark
             {
                 options.UseInMemoryDatabase(databaseName: "productDb"); //fiziksel db deðilde inmemorydb kullanýlacak
             });
+
+            services.AddHostedService<ImageWatermarkProcessBackgroundServices>(); //Background Service eklendi
 
             services.AddControllersWithViews();
         }
