@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "UdemyRabbitMQ.Subscriber": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:62112;http://localhost:62115"
+    }
+  }
+}
