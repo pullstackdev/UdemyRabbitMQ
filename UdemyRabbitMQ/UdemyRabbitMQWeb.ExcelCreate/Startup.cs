@@ -6,11 +6,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using RabbitMQ.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using UdemyRabbitMQWeb.ExcelCreate.Models;
+using UdemyRabbitMQWeb.ExcelCreate.Services;
 
 namespace UdemyRabbitMQWeb.ExcelCreate
 {
@@ -25,6 +27,10 @@ namespace UdemyRabbitMQWeb.ExcelCreate
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton(sp => new ConnectionFactory() { Uri = new Uri(Configuration.GetConnectionString("RabbitMQ")), DispatchConsumersAsync = true }); //RABBÝTMQ'ya baðlandý, DI ile serviste çaðýr. BsicConsumer asyncda olduðu için DispatchConsumersAsync ekledik 
+            services.AddSingleton<RabbitMQClientService>(); //SERVÝS EKLENDÝ
+            services.AddSingleton<RabbitMQPublisher>(); //SERVÝS EKLENDÝ
+
             //sqlserver db 
             services.AddDbContext<AppDbContext>(options =>
             {

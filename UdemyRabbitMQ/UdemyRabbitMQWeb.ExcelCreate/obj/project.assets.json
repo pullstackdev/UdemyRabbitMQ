@@ -1884,6 +1884,16 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Shared.dll": {}
+        }
       }
     }
   },
@@ -6308,6 +6318,11 @@
         "system.xml.xmlserializer.4.3.0.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
+    },
+    "Shared/1.0.0": {
+      "type": "project",
+      "path": "../Shared/Shared.csproj",
+      "msbuildProject": "../Shared/Shared.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -6316,7 +6331,8 @@
       "Microsoft.EntityFrameworkCore >= 5.0.17",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.17",
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.17",
-      "RabbitMQ.Client >= 6.4.0"
+      "RabbitMQ.Client >= 6.4.0",
+      "Shared >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -6351,7 +6367,11 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\workshop\\my\\Udemy\\F.C-Core-RabbitMQ\\UdemyRabbitMQ\\UdemyRabbitMQ\\Shared\\Shared.csproj": {
+              "projectPath": "D:\\workshop\\my\\Udemy\\F.C-Core-RabbitMQ\\UdemyRabbitMQ\\UdemyRabbitMQ\\Shared\\Shared.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
