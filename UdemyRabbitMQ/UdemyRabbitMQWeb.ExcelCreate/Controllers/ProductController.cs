@@ -44,7 +44,7 @@ namespace UdemyRabbitMQWeb.ExcelCreate.Controllers
             await _appDbContext.UserFiles.AddAsync(userFile); //await ile beklettim ama async olduğu için blocklama demiş oldum
             await _appDbContext.SaveChangesAsync();
 
-            //rabbitmq message gönder
+            //PUBLİSHER ile rabbitmq message gönder
             _rabbitMQPublisher.Publish(new Shared.CreateExcelMessage() { FileId = userFile.Id, UserId = user.Id });
 
             TempData["StartCreatingExcel"] = true; //bir requestten diğerine tempdata ile data taşınabilir (cookiede tuttuğu için)

@@ -27,7 +27,7 @@ namespace UdemyRabbitMQWeb.ExcelCreate
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton(sp => new ConnectionFactory() { Uri = new Uri(Configuration.GetConnectionString("RabbitMQ")), DispatchConsumersAsync = true }); //RABBÝTMQ'ya baðlandý, DI ile serviste çaðýr. BsicConsumer asyncda olduðu için DispatchConsumersAsync ekledik 
+            services.AddSingleton(sp => new ConnectionFactory() { Uri = new Uri(Configuration.GetConnectionString("RabbitMQ")), DispatchConsumersAsync = true }); //RABBÝTMQ'ya baðlandý, DI ile serviste çaðýr. BasicConsumer asyncda olduðu için DispatchConsumersAsync ekledik 
             services.AddSingleton<RabbitMQClientService>(); //SERVÝS EKLENDÝ
             services.AddSingleton<RabbitMQPublisher>(); //SERVÝS EKLENDÝ
 
