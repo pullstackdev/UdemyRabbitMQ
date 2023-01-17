@@ -45,7 +45,7 @@ namespace UdemyRabbitMQWeb.ExcelCreate.Controllers
             await _appDbContext.SaveChangesAsync();
 
             //PUBLİSHER ile rabbitmq message gönder
-            _rabbitMQPublisher.Publish(new Shared.CreateExcelMessage() { FileId = userFile.Id, UserId = user.Id });
+            _rabbitMQPublisher.Publish(new Shared.CreateExcelMessage() { FileId = userFile.Id });
 
             TempData["StartCreatingExcel"] = true; //bir requestten diğerine tempdata ile data taşınabilir (cookiede tuttuğu için)
 

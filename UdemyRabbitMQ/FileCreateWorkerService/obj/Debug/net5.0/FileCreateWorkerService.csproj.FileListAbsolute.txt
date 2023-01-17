@@ -86,3 +86,12 @@ D:\workshop\my\Udemy\F.C-Core-RabbitMQ\UdemyRabbitMQ\UdemyRabbitMQ\FileCreateWor
 D:\workshop\my\Udemy\F.C-Core-RabbitMQ\UdemyRabbitMQ\UdemyRabbitMQ\FileCreateWorkerService\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 D:\workshop\my\Udemy\F.C-Core-RabbitMQ\UdemyRabbitMQ\UdemyRabbitMQ\FileCreateWorkerService\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 D:\workshop\my\Udemy\F.C-Core-RabbitMQ\UdemyRabbitMQ\UdemyRabbitMQ\FileCreateWorkerService\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+D:\workshop\my\Udemy\F.C-Core-RabbitMQ\UdemyRabbitMQ\UdemyRabbitMQ\FileCreateWorkerService\bin\Debug\net5.0\ClosedXML.dll
+D:\workshop\my\Udemy\F.C-Core-RabbitMQ\UdemyRabbitMQ\UdemyRabbitMQ\FileCreateWorkerService\bin\Debug\net5.0\DocumentFormat.OpenXml.dll
+D:\workshop\my\Udemy\F.C-Core-RabbitMQ\UdemyRabbitMQ\UdemyRabbitMQ\FileCreateWorkerService\bin\Debug\net5.0\ExcelNumberFormat.dll
+D:\workshop\my\Udemy\F.C-Core-RabbitMQ\UdemyRabbitMQ\UdemyRabbitMQ\FileCreateWorkerService\bin\Debug\net5.0\Irony.dll
+D:\workshop\my\Udemy\F.C-Core-RabbitMQ\UdemyRabbitMQ\UdemyRabbitMQ\FileCreateWorkerService\bin\Debug\net5.0\SixLabors.Fonts.dll
+D:\workshop\my\Udemy\F.C-Core-RabbitMQ\UdemyRabbitMQ\UdemyRabbitMQ\FileCreateWorkerService\bin\Debug\net5.0\System.IO.Packaging.dll
+D:\workshop\my\Udemy\F.C-Core-RabbitMQ\UdemyRabbitMQ\UdemyRabbitMQ\FileCreateWorkerService\bin\Debug\net5.0\XLParser.dll
+D:\workshop\my\Udemy\F.C-Core-RabbitMQ\UdemyRabbitMQ\UdemyRabbitMQ\FileCreateWorkerService\bin\Debug\net5.0\Shared.dll
+D:\workshop\my\Udemy\F.C-Core-RabbitMQ\UdemyRabbitMQ\UdemyRabbitMQ\FileCreateWorkerService\bin\Debug\net5.0\Shared.pdb

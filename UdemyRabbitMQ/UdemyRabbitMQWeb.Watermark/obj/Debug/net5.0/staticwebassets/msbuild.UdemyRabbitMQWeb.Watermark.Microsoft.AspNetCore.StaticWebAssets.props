@@ -32,12 +32,12 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\favicon.ico))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Images\159bb103-32d1-4078-bfec-5c742d79d413.png))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Images\247910fb-4fe8-44ec-b66c-e3a683da1815.png))">
       <SourceType>Package</SourceType>
       <SourceId>UdemyRabbitMQWeb.Watermark</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/UdemyRabbitMQWeb.Watermark</BasePath>
-      <RelativePath>Images\159bb103-32d1-4078-bfec-5c742d79d413.png</RelativePath>
+      <RelativePath>Images\247910fb-4fe8-44ec-b66c-e3a683da1815.png</RelativePath>
       <AssetKind></AssetKind>
       <AssetMode></AssetMode>
       <AssetRole></AssetRole>
@@ -46,14 +46,14 @@
       <AssetTraitValue></AssetTraitValue>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Images\159bb103-32d1-4078-bfec-5c742d79d413.png))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Images\247910fb-4fe8-44ec-b66c-e3a683da1815.png))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Images\watermarks\159bb103-32d1-4078-bfec-5c742d79d413.png))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Images\watermarks\247910fb-4fe8-44ec-b66c-e3a683da1815.png))">
       <SourceType>Package</SourceType>
       <SourceId>UdemyRabbitMQWeb.Watermark</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/UdemyRabbitMQWeb.Watermark</BasePath>
-      <RelativePath>Images\watermarks\159bb103-32d1-4078-bfec-5c742d79d413.png</RelativePath>
+      <RelativePath>Images\watermarks\247910fb-4fe8-44ec-b66c-e3a683da1815.png</RelativePath>
       <AssetKind></AssetKind>
       <AssetMode></AssetMode>
       <AssetRole></AssetRole>
@@ -62,7 +62,7 @@
       <AssetTraitValue></AssetTraitValue>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Images\watermarks\159bb103-32d1-4078-bfec-5c742d79d413.png))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Images\watermarks\247910fb-4fe8-44ec-b66c-e3a683da1815.png))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\js\site.js))">
       <SourceType>Package</SourceType>
