@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authorization; //for Authorize
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using UdemyRabbitMQWeb.ExcelCreate.Hubs;
 using UdemyRabbitMQWeb.ExcelCreate.Models;
 using UdemyRabbitMQWeb.ExcelCreate.Services;
 
@@ -16,12 +18,13 @@ namespace UdemyRabbitMQWeb.ExcelCreate.Controllers
         private readonly AppDbContext _appDbContext; //db
         private readonly UserManager<IdentityUser> _userManager; //user işlemleri(IS)
         private readonly RabbitMQPublisher _rabbitMQPublisher;
-
-        public ProductController(AppDbContext appDbContext, UserManager<IdentityUser> userManager, RabbitMQPublisher rabbitMQPublisher)
+        private readonly IHubContext<MyHub> _hubContext;
+        public ProductController(AppDbContext appDbContext, UserManager<IdentityUser> userManager, RabbitMQPublisher rabbitMQPublisher, IHubContext<MyHub> hubContext)
         {
             _appDbContext = appDbContext;
             _userManager = userManager;
             _rabbitMQPublisher= rabbitMQPublisher;
+            _hubContext = hubContext;
         }
 
         public IActionResult Index()
@@ -49,6 +52,9 @@ namespace UdemyRabbitMQWeb.ExcelCreate.Controllers
 
             TempData["StartCreatingExcel"] = true; //bir requestten diğerine tempdata ile data taşınabilir (cookiede tuttuğu için)
 
+            //şimdilik signalr
+            await _hubContext.Clients.User(userFile.UserId).SendAsync("SavedFile"); //sadece bu userId'ye gidecek, layout dinlemeli
+            await Task.Delay(5000);
             return RedirectToAction(nameof(Files));
         }
 

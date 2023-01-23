@@ -85,7 +85,8 @@ namespace FileCreateWorkerService
             }
             catch (Exception ex)
             {
-                //signalr'ý buraya kuralým þimdilik
+
+                //throw;
             }
             
         }

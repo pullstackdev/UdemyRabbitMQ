@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using UdemyRabbitMQWeb.ExcelCreate.Hubs;
 using UdemyRabbitMQWeb.ExcelCreate.Models;
 using UdemyRabbitMQWeb.ExcelCreate.Services;
 
@@ -44,6 +45,8 @@ namespace UdemyRabbitMQWeb.ExcelCreate
             }).AddEntityFrameworkStores<AppDbContext>(); //identity bilgileri ef de kaydedilecek
 
             services.AddControllersWithViews();
+
+            services.AddSignalR(); //eklendi
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -55,7 +58,6 @@ namespace UdemyRabbitMQWeb.ExcelCreate
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
@@ -67,6 +69,8 @@ namespace UdemyRabbitMQWeb.ExcelCreate
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapHub<MyHub>("/MyHub"); //bu endpoint üzerinden hub ile iletiþime geçilecek
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

@@ -34,9 +34,9 @@
                             </li>
                         }
                     </ul>
-                    @if (Context.User.Identity.IsAuthenticated) 
+                    @if (Context.User.Identity.IsAuthenticated)
                     {
-                       <span>User Name : @Context.User.Identity.Name</span>
+                        <span>User Name : @Context.User.Identity.Name</span>
                     }
                 </div>
             </div>
@@ -56,6 +56,37 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.2/signalr.min.js" integrity="sha512-YXK3VHvk8oUFEYl3/DkoQ8dRIQWl7+igjOu1kW5TWKqdrvxCcQU6XgpzFSNMSO6ectu0EedR0aRcGcDFuW7eCA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(document).ready(function(){
+            var connection= new signalR.HubConnectionBuilder().withUrl("/MyHub").build();
+            start();
+            function start(){
+                connection.start().then().catch((err)=>{
+                    consolelog(err);
+                    setTimeout(()=>start(), 2000);
+                })
+            }
+            connection.on("SavedFile", () => {
+                console.log("file kaydediledi");
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Your work has been saved',
+                    showConfirmButton: true,
+                    confirmButtonText = "Dosyalarım",
+                    //timer: 1500
+                }).then((result)=>{
+                    if(result.isConfirmed){
+                        alert("butona basıldı")
+                    }
+                })
+            })
+        });
+    </script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

@@ -1,5 +1,23 @@
 ﻿@model List<UserFile>
 
+@section Scripts{ @*layouttaki section yazan yerde görünmesi için*@
+    <script>
+        $(document).ready(function () {
+            var hasStartCreatingExcel = '@TempData["StartCreatingExcel"]'
+            if (hasStartCreatingExcel{
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Excel oluşturma başladı',
+                    showConfirmButton: false,
+                    //confirmButtonText = "Dosyalarım",
+                    //timer: 1500
+                })
+            }
+        })
+    </script>
+}
+
 <h1>Files</h1>
 <table class="table table-striped">
     <thead>
